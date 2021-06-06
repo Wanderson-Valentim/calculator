@@ -10,30 +10,43 @@ function getKey(event){
     let bottomScreen = document.querySelector('#number')
     const keyName = event.key
 
-    if(bottomScreen.textContent.length < 17){
-        if(keyName >= 0 || keyName <= 9 || keyName == '.'){
-            if(keyName == '.' && !bottomScreen.textContent.includes('.') && bottomScreen.textContent.length > 0){
-                bottomScreen.innerHTML += `${keyName}`
-            }
-            else if(keyName != '.'){
-                bottomScreen.innerHTML += `${keyName}`
-            }
-        }
-    if(keys.indexOf(keyName) != -1){
-        if(keyName == 'Escape'){
-            //topScreen.innerHTML = ``
-            bottomScreen.innerHTML = ''
-        }
-        else if(keyName == 'Enter'){
+    if(bottomScreen.textContent.length < 17 && keys.indexOf(keyName) == -1){
+        numberKeys(keyName, bottomScreen)
+    }
+    else{
+        otherKeys(keyName, topScreen, bottomScreen)
+    }
+}
 
-        }
-        else if(keyName == 'Backspace'){
+function numberKeys(key, bottomScreen){
+    if(key >= 0 || key <= 9 || key == '.'){
+        let screenText = bottomScreen.textContent
 
+        if(key == '.' && !screenText.includes('.') && screenText.length > 0){
+            bottomScreen.innerHTML += `${key}`
         }
-        else{
-
+        else if(key != '.'){
+            bottomScreen.innerHTML += `${key}`
         }
     }
+}
+
+function otherKeys(key, topScreen, bottomScreen){
+    console.log(key)
+    if(key == 'Escape'){
+        topScreen.innerHTML = ``
+        bottomScreen.innerHTML = ``
     }
-    //console.log(screen.textContent.length)
+    else if(key == 'Enter'){
+        
+    }
+    else if(key == 'Backspace'){
+        let screenText = bottomScreen.textContent
+        bottomScreen.innerHTML = `${screenText.slice(0,screenText.length-1)}`
+    }
+    else{
+        //let text = 
+        topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
+        bottomScreen.innerHTML = ``
+    }
 }
