@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300&display=swap');
+
 body{
     background-color: #4656e8;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 #calculator{
@@ -21,6 +24,23 @@ body{
     border-radius: 15px;
 }
 
+#expression{
+    position: relative;
+    top: 5px;
+    padding: 5px;
+    font-size: 10pt;
+    text-align: right;
+}
+
+#number{
+    position: relative;
+    top: 5px;
+    padding: 5px;
+    text-align: right;
+    font-size: 28pt;
+    font-weight: 900;
+}
+
 #calculator-buttons{
     position: absolute;
     top: 130px;
@@ -28,7 +48,7 @@ body{
 }
 
 #clear{
-    width: 100px;
+    width: 105px;
     height: 60px;
     background-color: #ef476f;
     border-radius: 5px;
@@ -36,7 +56,7 @@ body{
 
 .operations{
     display: inline-table;
-    margin-right: 5px;
+    margin-right: 4px;
     width: 80px;
     height: 60px;
     background-color: #ffd166;
@@ -77,11 +97,3 @@ body{
     font-size: 35pt;
     text-align: center;
 }
-
-/*.button1{
-    width: 70px;
-    height: 70px;
-    background-color: #ffd166;
-    EFEA5A
-}*/
-
