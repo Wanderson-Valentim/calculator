@@ -1,6 +1,6 @@
 var calculator = document.querySelector('#calculator')
 var expression = ''
-var num = ''
+var number = ''
 const keys = ['Escape','Enter','Backspace','%','/','*','-','+']
 
 function main(){
@@ -26,15 +26,18 @@ function numberKeys(key, bottomScreen){
 
         if(key == '.' && !screenText.includes('.') && screenText.length > 0){
             bottomScreen.innerHTML += `${key}`
+            number += key
         }
         else if(key != '.'){
             bottomScreen.innerHTML += `${key}`
+            number += key
         }
     }
 }
 
 function otherKeys(key, topScreen, bottomScreen){
     if(key == 'Escape'){
+        expression = ``
         topScreen.innerHTML = ``
         bottomScreen.innerHTML = ``
     }
@@ -44,23 +47,34 @@ function otherKeys(key, topScreen, bottomScreen){
     else if(key == 'Backspace'){
         let screenText = bottomScreen.textContent
         bottomScreen.innerHTML = `${screenText.slice(0,screenText.length-1)}`
+        number = number.slice(0,number.length-1)
     }
     else{
-        let finalCharacter = topScreen.textContent.slice(topScreen.textContent.length-1)
-
-        if(bottomScreen.textContent.length > 0 && finalCharacter.length == 0){
-            topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
-            bottomScreen.innerHTML = ``
-        }
-        else if(keys.includes(finalCharacter) && bottomScreen.textContent.length > 0){
-            topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
-            bottomScreen.innerHTML = ``
-        }
-
-        if(topScreen.textContent.length > 49){
-            adjustText(topScreen, 49)
-        }
+        operations(key, topScreen, bottomScreen)
     }
+    console.log(number)
+}
+
+function operations(key, topScreen, bottomScreen){
+    let finalCharacter = topScreen.textContent.slice(topScreen.textContent.length-1)
+    
+    if(bottomScreen.textContent.length > 0 && finalCharacter.length == 0){
+        expression += `${number + '' +key}`
+        topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
+        bottomScreen.innerHTML = ``
+        number = ``
+    }
+    else if(keys.includes(finalCharacter) && bottomScreen.textContent.length > 0){
+        expression += `${number + '' +key}`
+        topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
+        bottomScreen.innerHTML = ``
+        number = ``
+    }
+    
+    if(topScreen.textContent.length > 49){
+        adjustText(topScreen, 49)
+    }
+    console.log(expression)
 }
 
 function adjustText(screen, limitNum){
