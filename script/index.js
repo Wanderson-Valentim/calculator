@@ -1,4 +1,6 @@
 var calculator = document.querySelector('#calculator')
+var expression = ''
+var num = ''
 const keys = ['Escape','Enter','Backspace','%','/','*','-','+']
 
 function main(){
@@ -13,7 +15,7 @@ function getKey(event){
     if(bottomScreen.textContent.length < 17 && keys.indexOf(keyName) == -1){
         numberKeys(keyName, bottomScreen)
     }
-    else{
+    else if(keys.indexOf(keyName) != -1){
         otherKeys(keyName, topScreen, bottomScreen)
     }
 }
@@ -32,7 +34,6 @@ function numberKeys(key, bottomScreen){
 }
 
 function otherKeys(key, topScreen, bottomScreen){
-    console.log(key)
     if(key == 'Escape'){
         topScreen.innerHTML = ``
         bottomScreen.innerHTML = ``
@@ -45,8 +46,24 @@ function otherKeys(key, topScreen, bottomScreen){
         bottomScreen.innerHTML = `${screenText.slice(0,screenText.length-1)}`
     }
     else{
-        //let text = 
-        topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
-        bottomScreen.innerHTML = ``
+        let finalCharacter = topScreen.textContent.slice(topScreen.textContent.length-1)
+
+        if(bottomScreen.textContent.length > 0 && finalCharacter.length == 0){
+            topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
+            bottomScreen.innerHTML = ``
+        }
+        else if(keys.includes(finalCharacter) && bottomScreen.textContent.length > 0){
+            topScreen.innerHTML += `${bottomScreen.textContent + '' +key}`
+            bottomScreen.innerHTML = ``
+        }
+
+        if(topScreen.textContent.length > 49){
+            adjustText(topScreen, 49)
+        }
     }
+}
+
+function adjustText(screen, limitNum){
+    let text = screen.textContent.slice(0,screen.textContent.length-limitNum)
+    screen.innerHTML = `${screen.textContent.replace(text,'...')}`
 }
