@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300&display=swap');
 
+@font-face {
+    font-family: calculatorFont;
+    src: url('./font/DS-DIGI.TTF');
+}
+
 body{
+    background-image: linear-gradient(to right, #4656e8 , #7984e0);
     background-color: #4656e8;
     font-family: 'Fira Sans', sans-serif;
 }
@@ -29,7 +35,8 @@ body{
     position: relative;
     top: 5px;
     padding: 5px;
-    font-size: 10pt;
+    font-family: 'calculatorFont';
+    font-size: 14pt;
     text-align: right;
 }
 
@@ -37,9 +44,9 @@ body{
     position: relative;
     top: 5px;
     padding: 5px;
+    font-family: 'calculatorFont';
+    font-size: 30pt;
     text-align: right;
-    font-size: 28pt;
-    font-weight: 900;
 }
 
 #calculator-buttons{
