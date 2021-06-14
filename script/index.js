@@ -4,22 +4,25 @@ var number = ''
 var numLimitScreen = 17
 var expLimitScreen = 38
 var finalCharacter = ''
+var finaResult = 0
 const keys = ['Escape', 'Enter', 'Backspace', '%', '/', '*', '-', '+']
 
 function main(){
-    document.addEventListener('keydown', getKey)
+    document.addEventListener('keydown', (event) => {
+        const keyName = event.key
+        checkKeys(keyName)})
 }
 
-function getKey(event){
+function checkKeys(key){
+    console.log(key)
     let topScreen = document.querySelector('#expression')
     let bottomScreen = document.querySelector('#number')
-    const keyName = event.key
 
-    if(keys.indexOf(keyName) == -1){
-        numberKeys(keyName, bottomScreen)
+    if(keys.indexOf(key) == -1){
+        numberKeys(key, bottomScreen)
     }
     else{
-        otherKeys(keyName, topScreen, bottomScreen)
+        otherKeys(key, topScreen, bottomScreen)
     }
 }
 
@@ -33,13 +36,14 @@ function numberKeys(key, bottomScreen){
             bottomScreen.innerHTML += `${key}`
             number += key
         }
-        if(bottomScreen.textContent.length >= numLimitScreen){
+        if(bottomScreen.textContent.length > numLimitScreen){
             adjustText(bottomScreen, numLimitScreen)
         }
     }
 }
 
 function otherKeys(key, topScreen, bottomScreen){
+    finalCharacter = topScreen.textContent.slice(topScreen.textContent.length - 2).trim()
     if(key == 'Escape'){
         expression = ``
         number = ``
@@ -47,16 +51,24 @@ function otherKeys(key, topScreen, bottomScreen){
         bottomScreen.innerHTML = ``
     }
     else if(key == 'Enter'){
-        //result()
+        result(topScreen, bottomScreen, finalCharacter)
     }
     else if(key == 'Backspace'){
         let screenText = bottomScreen.textContent
+        
         bottomScreen.innerHTML = `${screenText.slice(0,screenText.length-1)}`
         number = number.slice(0,number.length-1)
+
+        if(number.length > numLimitScreen){
+            bottomScreen.textContent = number
+            adjustText(bottomScreen, numLimitScreen)
+        }
+        else if(number.length == numLimitScreen){
+            bottomScreen.textContent = number
+        }
     }
     else{
         operations(key, topScreen, bottomScreen, finalCharacter)
-        finalCharacter = topScreen.textContent.slice(topScreen.textContent.length - 2).trim()
     }
 }
 
@@ -76,23 +88,30 @@ function operations(key, topScreen, bottomScreen, finalCharacter){
             expression += `${number + ' ' + key + ' '}`
             topScreen.innerHTML += `${number + ' ' + key + ' '}`
         }
+        bottomScreen.innerHTML = ``
+        number = ``
     }
-
-    bottomScreen.innerHTML = ``
-    number = ``
 
     if(topScreen.textContent.length > expLimitScreen){
         adjustText(topScreen, expLimitScreen)
     }
 }
 
-/*function result(){
-    if(keys.slice(4,8).includes(finalCharacter)){
+function result(topScreen, bottomScreen, finalCharacter){
+    let screen = bottomScreen.textContent
 
+    if(screen.length == 0 && (keys.slice(4,8).includes(finalCharacter) || finalCharacter == '')){
+        bottomScreen.innerHTML = `Invalid Operation`
+        setTimeout(() => { bottomScreen.innerHTML = `` }, 1000);
     }
-}*/
+}
 
 function adjustText(screen, numLimit){
     let text = screen.textContent.slice(0, screen.textContent.length - numLimit)
     screen.innerHTML = `${screen.textContent.replace(text, '...')}`
 }
+
+/*function animationKey(key){
+    button = document.querySelector('#nine').style
+    button.left = '5px'
+}*/
