@@ -14,7 +14,6 @@ function main(){
 }
 
 function checkKeys(key){
-    console.log(key)
     let topScreen = document.querySelector('#expression')
     let bottomScreen = document.querySelector('#number')
 
@@ -70,6 +69,7 @@ function otherKeys(key, topScreen, bottomScreen){
     else{
         operations(key, topScreen, bottomScreen, finalCharacter)
     }
+    
 }
 
 function operations(key, topScreen, bottomScreen, finalCharacter){
@@ -111,7 +111,5 @@ function adjustText(screen, numLimit){
     screen.innerHTML = `${screen.textContent.replace(text, '...')}`
 }
 
-/*function animationKey(key){
-    button = document.querySelector('#nine').style
-    button.left = '5px'
-}*/
+var a = document.querySelectorAll('.button')
+console.log(a[0].style.active)
