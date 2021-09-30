@@ -111,5 +111,22 @@ function adjustText(screen, numLimit){
     screen.innerHTML = `${screen.textContent.replace(text, '...')}`
 }
 
-var a = document.querySelectorAll('.button')
-console.log(a[0].style.active)
+function sum(a, b){
+    return a + b
+}
+
+function subtraction(a, b){
+    return a - b
+}
+
+function multiplication(a, b){
+    return a * b
+}
+
+function division(a, b){
+    return a / b
+}
+
+function percentage(a){
+    return a / 100
+}
