@@ -31,22 +31,6 @@ body{
     border-radius: 15px;
 }
 
-.screen-elements{
-    position: relative;
-    top: 5px;
-    padding: 5px;
-    font-family: 'calculatorFont';
-    text-align: right;
-}
-
-#expression{
-    font-size: 14pt;
-}
-
-#number{
-    font-size: 30pt;
-}
-
 #calculator-buttons{
     position: absolute;
     top: 130px;
@@ -56,64 +40,46 @@ body{
 #clear{
     width: 105px;
     height: 60px;
+    font-size: 30pt;
+    border-color: #056069;
     background-color: #056069;
-    box-shadow: 3px 3px #022d31;
-    border-radius: 5px;
-}
-
-.operations{
-    display: inline-table;
-    margin-right: 4px;
-    width: 80px;
-    height: 60px;
-    background-color: #759FBC;
-    box-shadow: 3px 3px #496579;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 35pt;
-    text-align: center;
-}
-
-.buttons{
-    display: inline-table;
-}
-
-.button{
-    display: inline-table;
-    margin-top: 10px;
-    margin-right: 10px;
-    width: 82px;
-    height: 60px;
-    background-color: #90C3C8;
-    box-shadow: 3px 3px #5a797c;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 35pt;
-    text-align: center;
+    /*box-shadow: 3px 3px #022d31;*/
 }
 
 #zero{
     width: 178px;
 }
 
-.button-aside{
+.screen-elements{
+    position: relative;
+    top: 5px;
+    padding: 5px;
+    font-family: 'calculatorFont';
+    text-align: right;
+}
+
+.button{
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 35pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.operation{
+    border-color: #759FBC;
     margin-top: 10px;
     width: 80px;
     height: 60px;
     background-color: #759FBC;
-    box-shadow: 3px 3px #496579;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 35pt;
-    text-align: center;
+    /*box-shadow: 3px 3px #496579;*/
 }
 
-.operations:active,  
-.button-aside:active,  
-.button:active,  
-.operations:active {
-    position: relative;
-    top: 3px;
-    left: 3px;
-    box-shadow: none;
+.number{
+    border-color: #90C3C8;
+    width: 82px;
+    height: 60px;
+    background-color: #90C3C8;
+    /*box-shadow: 3px 3px #5a797c;*/
 }

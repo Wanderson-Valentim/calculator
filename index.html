@@ -13,45 +13,30 @@
             <div class="screen-elements" id="expression"></div>
             <div class="screen-elements" id="number"></div>
         </div>
+
         <div id="calculator-buttons">
-            <div>
-                <div id="clear" class="operations" onclick="checkKeys('Escape')">CLR</div>
-                <div class="operations" onclick="checkKeys('Backspace')">&#8592;</div>
-                <div class="operations" onclick="checkKeys('%')">&#37;</div>
-                <div class="operations" onclick="checkKeys('/')">&divide</div>
-            </div>
+            <button id="clear" class="button">CLR</button>
+            <button class="button operation">&#8592;</button>
+            <button class="button operation">&#37;</button>
+            <button class="button operation">&divide</button>
 
-            <div class="buttons">
-                <div>
-                    <div class="button" onclick="checkKeys('7')">7</div>
-                    <div class="button" onclick="checkKeys('8')">8</div>
-                    <div class="button" onclick="checkKeys('9')">9</div>   
-                </div>
-                
-                <div>
-                    <div class="button" onclick="checkKeys('4')">4</div>
-                    <div class="button" onclick="checkKeys('5')">5</div>
-                    <div class="button" onclick="checkKeys('6')">6</div>
-                </div>
-                
-                <div>
-                    <div class="button" onclick="checkKeys('1')">1</div>
-                    <div class="button" onclick="checkKeys('2')">2</div>
-                    <div class="button" onclick="checkKeys('3')">3</div>
-                </div>
-    
-                <div>
-                    <div id="zero" class="button" onclick="checkKeys('0')">0</div>
-                    <div class="button" onclick="checkKeys('.')">.</div>
-                </div>
-            </div>
+            <button class="button number">1</button>
+            <button class="button number">2</button>
+            <button class="button number">3</button>
+            <button class="button number">4</button>
+            <button class="button number">5</button>
+            <button class="button number">6</button>
+            <button class="button number">7</button>
+            <button class="button number">8</button>
+            <button class="button number">9</button>
 
-            <div class="buttons">
-                <div class="button-aside" onclick="checkKeys('*')">x</div>
-                <div class="button-aside" onclick="checkKeys('+')">+</div>
-                <div class="button-aside" onclick="checkKeys('-')">-</div>
-                <div id="equal" class="button-aside" onclick="checkKeys('Enter')">=</div>
-            </div>
+            <button id="zero" class="button number">0</button>
+            <button class="button number">.</button>
+            <button class="button operation">*</button>
+
+            <button class="button operation">+</button>
+            <button class="button operation">-</button>
+            <button class="button operation">=</button>
         </div> 
     </section>
 
