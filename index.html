@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
-    <title>Calculator</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style/style.css">
+        <title>Calculator</title>
+    </head>
 
-<body onload="main()">
-    <section id="calculator">
-        <div id="screen">
-            <div class="screen-elements" id="expression"></div>
-            <div class="screen-elements" id="number"></div>
+    <body>
+        <div id="main">
+            <div id="calculator">
+                <div id="screen">
+                    <div class="screen-elements expression"></div>
+                    <div class="screen-elements elements"></div>
+                </div>
+
+                <div id="calculator-buttons">
+                    <div class="up">
+                        <button class="button clear" name="clear">CLR</button>
+                        <button class="button operation opr-up" name="erase">&#8592;</button>
+                        <button class="button operation opr-up" name="percentage">&#37;</button>
+                        <button class="button operation opr-up" name="division">&divide</button>
+                    </div>
+                    <div class="opr-num">
+                        <div class="numbers">
+                            <button class="button number" name="7">7</button>
+                            <button class="button number" name="8">8</button>
+                            <button class="button number" name="9">9</button>
+                            <button class="button number" name="4">4</button>
+                            <button class="button number" name="5">5</button>
+                            <button class="button number" name="6">6</button>
+                            <button class="button number" name="1">1</button>
+                            <button class="button number" name="2">2</button>
+                            <button class="button number" name="3">3</button>
+                            <button id="zero" class="button number" name="0">0</button>
+                            <button class="button number" name="dot">.</button>
+                        </div>
+
+                        <div class="aside">
+                            <button class="button operation opr-aside" name="multiplication">*</button>
+                            <button class="button operation opr-aside" name="sum">+</button>
+                            <button class="button operation opr-aside" name="subtraction">-</button>
+                            <button class="button operation opr-aside" name="equal">=</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
         </div>
 
-        <div id="calculator-buttons">
-            <button id="clear" class="button">CLR</button>
-            <button class="button operation">&#8592;</button>
-            <button class="button operation">&#37;</button>
-            <button class="button operation">&divide</button>
-
-            <button class="button number">1</button>
-            <button class="button number">2</button>
-            <button class="button number">3</button>
-            <button class="button number">4</button>
-            <button class="button number">5</button>
-            <button class="button number">6</button>
-            <button class="button number">7</button>
-            <button class="button number">8</button>
-            <button class="button number">9</button>
-
-            <button id="zero" class="button number">0</button>
-            <button class="button number">.</button>
-            <button class="button operation">*</button>
-
-            <button class="button operation">+</button>
-            <button class="button operation">-</button>
-            <button class="button operation">=</button>
-        </div> 
-    </section>
-
-    <script src="./script/index.js"></script>
-</body>
+        <script src="./script/index.js"></script>
+    </body>
 </html>
