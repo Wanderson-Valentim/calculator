@@ -1,30 +1,70 @@
-var keys = {
-    'Backspace': 'erase',
-    'Enter': 'equal',
-    'Escape': 'clear',
-    '%': 'percentage',
-    '*': 'multiplication',
-    '+': 'sum',
-    '-': 'subtraction',
-    '/': 'division'
+var functionalities = ['Backspace', 'Enter', 'Escape']
+
+var operations = {
+    'multiplication': '*',
+    'subtraction': '-',
+    'percentage': '%',
+    'division': '/',
+    'sum': '+'
 }
 
 const calculator = document.querySelector('body')
 
-const buttons = document.querySelector('#calculator-buttons')
+const buttons = document.querySelectorAll('.button')
 
 calculator.addEventListener('keydown', (event) => {
-    const screen = document.querySelector('.elements')
+    writeOnScreen(event.key, operations, functionalities)
+})
 
-    if(keys[event.key]){
-        console.log(keys[event.key])
+buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        writeOnScreen(event.target.name, operations, functionalities)
+    })
+})
+
+function isScreenElement(element, operations){
+    let validator = false
+    //Atenção ao ''
+    let isNumber = element >= 0 && element <=9
+
+    if (isNumber){
+        validator = true
     }
     else{
-        console.log(event.key)
+        if(operations.hasOwnProperty(element)){
+            validator = checkElementInObject(element, operations)
+        }
     }
-})
 
-buttons.addEventListener('click', (event) => {
-    a = event.target
-    console.log(a.name)
-})
+    return validator
+}
+
+function checkElementInObject(element, object){
+    validator = false
+
+    for (value in object){
+        if(element === object[value]) validator = true
+    }
+
+    return validator
+}
+
+function writeOnScreen(element, operations, functionalities){
+    let isScreen = isScreenElement(element, operations)
+
+    if (isScreen){
+        writeOnElementsScreen(element)
+    }
+    else{
+        //let isFunctionality = functionalities.indexOf('element')
+    }
+}
+
+function writeOnElementsScreen(event){
+    console.log(event)
+    const elementsScreen = document.querySelector('.elements')
+}
+
+function writeOnExpressionScreen(){
+    const elementsScreen = document.querySelector('.expression')
+}
